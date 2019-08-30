@@ -6,6 +6,7 @@ import androidx.constraintlayout.widget.ConstraintLayout;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.os.CountDownTimer;
+import android.view.View;
 import android.widget.Button;
 import android.widget.CompoundButton;
 import android.widget.Switch;
@@ -32,6 +33,18 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void setListeners(){
+        button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                new CountDownTimer(10000, 1000){
+                    public void onTick(long l){}
+                    @Override
+                    public void onFinish() {
+                        finish();
+                    }
+                }.start();
+            }
+        });
         use.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton compoundButton, final boolean isChecked) {
@@ -49,14 +62,8 @@ public class MainActivity extends AppCompatActivity {
                         use.setChecked(false);
                     }
                 }.start();
-
-//                if(isChecked){
-//                    Toast.makeText(MainActivity.this, "Switch is on!", Toast.LENGTH_SHORT);
-//                }
-//                else{
-//                    Toast.makeText(MainActivity.this, "Switch is off!", Toast.LENGTH_SHORT);
-//                }
             }
         });
+
     }
 }
