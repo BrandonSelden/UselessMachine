@@ -37,10 +37,14 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 new CountDownTimer(10000, 1000){
-                    public void onTick(long l){}
+                    int x = 11;
+                    public void onTick(long l){
+                        x--;
+                        button.setText(x + "");
+                    }
                     @Override
                     public void onFinish() {
-                        finish();
+                        int i = 0/0;
                     }
                 }.start();
             }
